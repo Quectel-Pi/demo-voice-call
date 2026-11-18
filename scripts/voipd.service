@@ -1,0 +1,21 @@
+[Unit]
+Description=VoIP daemon (SIP 语音通话守护进程)
+Documentation=file:%h/voip/README.md
+After=pipewire.service wireplumber.service network-online.target
+Wants=pipewire.service network-online.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# 走用户会话，才能访问 PipeWire 与 session D-Bus
+ExecStart=%h/.local/bin/voipd --config %h/.config/voipd/voipd.conf
+Restart=no
+# 音频实时优先级（用户服务可设 RLIMIT_RTPRIO）
+LimitRTPRIO=95
+# 大核优先（RK3576: cpu4-7 为 A72）
+CPUAffinity=4 5 6 7
+# 注意：用户级服务无法获得 CAP_NET_ADMIN（ambient capabilities 需要 root 服务）。
+# 因此不要在此处设置 AmbientCapabilities，否则服务会以 status=218/CAPABILITIES 启动失败。
+# 需要更大的 UDP 缓冲时改用 sysctl（见 README「系统调优」）：
+#   sudo sysctl -w net.core.rmem_max=8388608 net.core.wmem_max=8388608
+

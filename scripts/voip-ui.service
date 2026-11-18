@@ -1,0 +1,8 @@
+[Unit]
+Description=VoIP 通话界面（GTK4）
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/voip-app
+Restart=no

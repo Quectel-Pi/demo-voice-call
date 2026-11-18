@@ -1,0 +1,363 @@
+/* Super VoIP Bros. —— 马里奥风格桌面语音通话应用
+ * 配色参考经典 FC 红白机调色板：
+ *   天空蓝 #5C94FC   管道绿 #00A651   砖块棕 #C84C0C
+ *   金币黄 #FBD000   马里奥红 #E52521  黑色描边 #1B1B1B
+ */
+
+window {
+  background: #5C94FC;
+  color: #1B1B1B;
+  font-family: "DejaVu Sans Mono", "Noto Sans Mono", monospace;
+}
+
+/* ---------------------------------------------------------- 顶部 HUD */
+
+headerbar.mario-hud {
+  background-image: linear-gradient(to bottom, #3B6CEB, #5C94FC 55%, #78AEFF);
+  border-bottom: 4px solid #1B1B1B;
+  padding: 2px 8px;
+  min-height: 46px;
+}
+
+.hud-title {
+  color: #FFF6C8;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px #C92A1E, 0 0 2px #1B1B1B;
+}
+
+.hud-sub {
+  color: #FFF6C8;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.nav-btn {
+  min-width: 64px;
+  min-height: 34px;
+  margin: 0 3px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 2px solid #1B1B1B;
+  background-image: linear-gradient(to bottom, #FBD000, #E8A400);
+  color: #1B1B1B;
+  font-weight: 800;
+  font-size: 12px;
+  box-shadow: 0 3px #8A5A00, inset 1px 1px rgba(255, 255, 255, 0.4);
+}
+.nav-btn:hover { background-image: linear-gradient(to bottom, #FFE34D, #F0B400); }
+.nav-btn:active,
+.nav-btn.nav-active:active {
+  box-shadow: 0 1px #8A5A00;
+  margin-top: 5px;
+  margin-bottom: -2px;
+}
+.nav-btn.nav-active {
+  background-image: linear-gradient(to bottom, #00A651, #00703A);
+  color: #FFF6C8;
+  box-shadow: 0 3px #003E1F, inset 1px 1px rgba(255, 255, 255, 0.35);
+}
+
+.status-chip {
+  min-height: 30px;
+  padding: 2px 10px;
+  border-radius: 14px;
+  border: 2px solid #1B1B1B;
+  background: #1B1B1B;
+  color: #FBD000;
+  font-size: 11px;
+  font-weight: 700;
+}
+.dot-on,
+.dot-off { font-size: 13px; }
+.dot-on { color: #3BE35A; }
+.dot-off { color: #FF5B4D; }
+
+/* ---------------------------------------------------------- 通用卡片/面板 */
+
+.stage {
+  padding: 18px 26px;
+}
+
+.brick-panel {
+  padding: 18px 22px;
+  border-radius: 10px;
+  border: 4px solid #1B1B1B;
+  background-image: linear-gradient(135deg, #D9701A 25%, #C84C0C 25%, #C84C0C 50%,
+                                     #D9701A 50%, #D9701A 75%, #C84C0C 75%, #C84C0C 100%);
+  background-size: 28px 28px;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.35);
+}
+
+.brick-panel.light {
+  background-image: linear-gradient(135deg, #FFE7B3 25%, #FFD87A 25%, #FFD87A 50%,
+                                     #FFE7B3 50%, #FFE7B3 75%, #FFD87A 75%, #FFD87A 100%);
+  background-size: 28px 28px;
+}
+
+.card {
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 3px solid #1B1B1B;
+  background: #FFF6E3;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.25);
+}
+
+.section-title {
+  color: #1B1B1B;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.hint {
+  color: #5A4A2E;
+  font-size: 10px;
+}
+
+/* ---------------------------------------------------------- 登录页 */
+
+.login-title {
+  color: #FFF6C8;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px #C92A1E, 0 0 3px #1B1B1B;
+}
+.login-caption {
+  color: #FFF6E3;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 1px 1px #1B1B1B;
+}
+
+.field-label {
+  color: #FFF6E3;
+  font-size: 11px;
+  font-weight: 800;
+  text-shadow: 1px 1px #1B1B1B;
+}
+
+entry.mario-entry {
+  min-height: 36px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 3px solid #1B1B1B;
+  background: #FFF6E3;
+  color: #1B1B1B;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: inset 2px 2px rgba(0,0,0,0.12);
+}
+entry.mario-entry:focus-within { border-color: #FBD000; }
+
+.login-status {
+  color: #FFF6C8;
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: 1px 1px #1B1B1B;
+}
+.login-status.ok { color: #B6FFC0; }
+.login-status.bad { color: #FFC2BC; }
+
+button.btn-green,
+button.btn-red,
+button.btn-yellow,
+button.btn-blue {
+  border-radius: 10px;
+  border: 3px solid #1B1B1B;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 8px 18px;
+}
+button.btn-green {
+  background-image: linear-gradient(to bottom, #35C25F, #00843E);
+  color: #FFF6E3;
+  box-shadow: 0 5px #00401E, inset 1px 1px rgba(255,255,255,0.3);
+}
+button.btn-green:hover { background-image: linear-gradient(to bottom, #45D06E, #0A9A4A); }
+button.btn-red {
+  background-image: linear-gradient(to bottom, #F2473A, #B2231A);
+  color: #FFF6E3;
+  box-shadow: 0 5px #5B0E09, inset 1px 1px rgba(255,255,255,0.3);
+}
+button.btn-red:hover { background-image: linear-gradient(to bottom, #FF574A, #C62C22); }
+button.btn-yellow {
+  background-image: linear-gradient(to bottom, #FBD000, #E8A400);
+  color: #1B1B1B;
+  box-shadow: 0 5px #8A5A00, inset 1px 1px rgba(255,255,255,0.3);
+}
+button.btn-yellow:hover { background-image: linear-gradient(to bottom, #FFE34D, #F0B400); }
+button.btn-blue {
+  background-image: linear-gradient(to bottom, #4D9CF2, #1E5FB2);
+  color: #FFF6E3;
+  box-shadow: 0 5px #0E3366, inset 1px 1px rgba(255,255,255,0.3);
+}
+button.btn-blue:hover { background-image: linear-gradient(to bottom, #5EA8FF, #276CC2); }
+
+button.btn-green:active,
+button.btn-red:active,
+button.btn-yellow:active,
+button.btn-blue:active {
+  margin-top: 5px;
+  margin-bottom: -2px;
+  box-shadow: 0 1px rgba(0,0,0,0.4);
+}
+button.btn-green:disabled,
+button.btn-red:disabled,
+button.btn-yellow:disabled,
+button.btn-blue:disabled {
+  opacity: 0.5;
+}
+
+/* ---------------------------------------------------------- 拨号页 */
+
+.lcd-screen {
+  min-height: 56px;
+  padding: 6px 16px;
+  border-radius: 8px;
+  border: 4px solid #1B1B1B;
+  background: #10220F;
+  box-shadow: inset 0 0 0 3px #284C26;
+}
+
+entry.lcd-entry {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #FBD000;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 6px;
+}
+entry.lcd-entry selection {
+  background: #00A651;
+}
+
+.keypad { margin-top: 4px; }
+
+button.key-btn {
+  min-width: 92px;
+  min-height: 60px;
+  padding: 0;
+  border-radius: 8px;
+  border: 3px solid #1B1B1B;
+  background-image: linear-gradient(to bottom, #FBD000 0%, #FBD000 55%, #E8A400 55%, #E8A400 100%);
+  box-shadow: 0 5px #8A5A00, inset 1px 1px rgba(255,255,255,0.35);
+}
+button.key-btn:hover { background-image: linear-gradient(to bottom, #FFE34D 0%, #FFE34D 55%, #F0B400 55%, #F0B400 100%); }
+button.key-btn:active {
+  margin-top: 5px;
+  margin-bottom: -2px;
+  box-shadow: 0 1px #8A5A00;
+}
+.key-main { color: #1B1B1B; font-size: 22px; font-weight: 800; }
+.key-sub { color: #6B4A00; font-size: 8px; letter-spacing: 1px; }
+
+.dial-actions { margin-top: 6px; }
+
+/* ---------------------------------------------------------- 通话页 */
+
+.call-card {
+  min-width: 420px;
+  padding: 20px;
+}
+.call-peer {
+  color: #1B1B1B;
+  font-size: 28px;
+  font-weight: 800;
+}
+.call-state {
+  color: #00703A;
+  font-size: 16px;
+  font-weight: 800;
+}
+.call-stats {
+  color: #5A4A2E;
+  font-size: 10px;
+}
+
+button.dtmf-key {
+  min-width: 58px;
+  min-height: 40px;
+  border-radius: 6px;
+  border: 2px solid #1B1B1B;
+  background: #FFF6E3;
+  color: #1B1B1B;
+  font-weight: 800;
+}
+
+/* ---------------------------------------------------------- 在线文字聊天 */
+
+.chat-peers {
+  border-right: 2px dashed #9C7238;
+  padding-right: 10px;
+}
+list.chat-list { background: transparent; }
+button.chat-peer-btn {
+  min-width: 150px;
+  padding: 8px;
+  color: #1B1B1B;
+  background: #FFE7B3;
+  border: 2px solid #1B1B1B;
+  border-radius: 6px;
+  font-size: 11px;
+}
+.chat-messages { padding: 10px; }
+.chat-incoming, .chat-outgoing {
+  padding: 8px 10px;
+  border: 2px solid #1B1B1B;
+  border-radius: 8px;
+}
+.chat-incoming { background: #FFE7B3; }
+.chat-outgoing { background: #D0F5D6; }
+.chat-body { color: #1B1B1B; font-size: 12px; }
+.chat-status { color: #5A4A2E; font-size: 9px; }
+textview.chat-input {
+  background: #FFF6E3;
+  color: #1B1B1B;
+  padding: 8px;
+  border: 2px solid #1B1B1B;
+}
+
+/* ---------------------------------------------------------- 记录 / 设备页 */
+
+list.hist-list {
+  background: transparent;
+}
+list.hist-list row {
+  border-bottom: 2px dashed #1B1B1B;
+  padding: 4px 0;
+}
+.hist-arrow { color: #00703A; font-size: 16px; min-width: 24px; }
+.hist-peer { color: #1B1B1B; font-size: 14px; font-weight: 800; }
+.hist-sub { color: #5A4A2E; font-size: 9px; }
+
+.mono {
+  color: #1B1B1B;
+  font-family: monospace;
+  font-size: 10px;
+}
+
+.device-list {
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid #9C7238;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+.device-active {
+  color: #00703A;
+  font-size: 11px;
+  font-weight: 800;
+}
+.device-idle {
+  color: #5A4A2E;
+  font-size: 11px;
+}
+.device-role {
+  color: #1B1B1B;
+  font-size: 9px;
+  font-weight: 700;
+  min-width: 54px;
+}
