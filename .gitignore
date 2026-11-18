@@ -1,0 +1,7 @@
+# Runtime state can contain SIP credentials, call history, logs, and local cookies.
+.runtime/
+
+# Build outputs and Python bytecode.
+build/
+__pycache__/
+*.py[cod]
